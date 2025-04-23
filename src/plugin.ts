@@ -1,9 +1,9 @@
 import {
-	createServer,
 	type CommonServerOptions,
-	type UserConfig,
 	type Plugin,
+	type UserConfig,
 	type ViteDevServer,
+	createServer,
 } from 'vite';
 
 // Mix and match, based on the existing types of Vite options.
