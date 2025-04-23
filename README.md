@@ -40,7 +40,7 @@ export default defineConfig({
 
 ### API
 
-`multiServer(schema, options?)`
+`multiServer(options)`
 
 ### Options
 
