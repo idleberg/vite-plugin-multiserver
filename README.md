@@ -44,7 +44,7 @@ export default defineConfig({
 
 ### Options
 
-The default options are currently a subset of the Vite Server Options:
+The default options are currently a subset of the Vite server options:
 
 - [`allowedHosts`](https://vite.dev/config/server-options.html#server-allowedhosts)
 - [`cors`](https://vite.dev/config/server-options.html#server-cors)
