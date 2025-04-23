@@ -40,6 +40,7 @@
 		"@total-typescript/tsconfig": "^1.0.4",
 		"@types/node": "^22.14.1",
 		"lefthook": "^1.11.11",
+		"np": "^10.2.0",
 		"tsup": "^8.4.0",
 		"typescript": "^5.8.3",
 		"vite": "^6.2.6"
