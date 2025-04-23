@@ -11,7 +11,7 @@
 ## Installation
 
 ```shell
-npm install -D vite-plugin-multiserver valibot
+npm install -D vite-plugin-multiserver
 ```
 
 ## Usage
