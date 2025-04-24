@@ -30,7 +30,9 @@ const servers: ViteDevServer[] = [];
  * @param options - an array of server options and Vite overrides
  * @returns a Vite plugins
  */
-export default function MultiserverPlugin(options: PluginOptions[]): Plugin {
+export default function MultiserverPlugin(
+	options: PluginOptions | PluginOptions[],
+): Plugin {
 	return {
 		name: 'vite-plugin-multiserver',
 		configureServer() {
