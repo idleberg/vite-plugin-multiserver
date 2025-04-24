@@ -20,7 +20,7 @@ npm install -D vite-plugin-multiserver
 
 ## Usage
 
-Let's start with a very basic example
+Let's start with a basic example where we spin up a server for the main website and a second one for an iFrame embedded by that page. The idea is that both are part of the same application.
 
 ```javascript
 import { defineConfig } from 'vite';
@@ -49,7 +49,7 @@ export default defineConfig({
 ### Options
 
 > [!TIP]
-> Accepts both, a single options object or an array of many.
+> The options can be provided as both, a single options object or an array of many.
 
 The default options are currently a subset of the Vite server options:
 
