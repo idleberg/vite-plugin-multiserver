@@ -1,6 +1,7 @@
 import {
 	type CommonServerOptions,
 	type Plugin,
+	type ResolvedConfig,
 	type UserConfig,
 	type ViteDevServer,
 	createServer,
@@ -28,13 +29,22 @@ const servers: ViteDevServer[] = [];
 /**
  * Exports a Vite plugin launches multiple servers.
  * @param options - an array of server options and Vite overrides
+ * @param inheritAppOptions - whether to inherit the app options
  * @returns a Vite plugins
  */
-export default function MultiserverPlugin(
-	options: PluginOptions | PluginOptions[],
-): Plugin {
+export default function MultiserverPlugin(options: PluginOptions | PluginOptions[], inheritAppOptions = true): Plugin {
+	let appConfig: UserConfig = {};
+
 	return {
 		name: 'vite-plugin-multiserver',
+		configResolved(config) {
+			if (!inheritAppOptions) {
+				return;
+			}
+
+			appConfig = mergeOptions({}, config);
+		},
+
 		configureServer() {
 			const optionsArray = Array.isArray(options) ? options : [options];
 
@@ -42,30 +52,7 @@ export default function MultiserverPlugin(
 				const devServer = await createServer({
 					configFile: false,
 
-					// Overrides
-					base: config.overrides?.base,
-					cacheDir: config.overrides?.cacheDir,
-					clearScreen: config.overrides?.clearScreen,
-					customLogger: config.overrides?.customLogger,
-					define: config.overrides?.define,
-					envDir: config.overrides?.envDir,
-					envPrefix: config.overrides?.envPrefix,
-					mode: config.overrides?.mode,
-					publicDir: config.overrides?.publicDir,
-					root: config.overrides?.root,
-
-					// Server options
-					server: {
-						allowedHosts: config.allowedHosts,
-						cors: config.cors,
-						headers: config.headers,
-						host: config.host,
-						https: config.https,
-						open: config.open,
-						port: config.port,
-						proxy: config.proxy,
-						strictPort: config.strictPort,
-					},
+					...mergeOptions(config, appConfig),
 				});
 
 				servers[index] = await devServer.listen();
@@ -89,6 +76,41 @@ export default function MultiserverPlugin(
 			for (const server of servers) {
 				server.close();
 			}
+		},
+	};
+}
+
+/**
+ * Helper function to filter & merge options.
+ * @param config
+ * @param appConfig
+ * @returns
+ */
+function mergeOptions(config: PluginOptions, appConfig: ResolvedConfig | UserConfig): UserConfig {
+	return {
+		// Overrides
+		base: config.overrides?.base ?? appConfig.base,
+		cacheDir: config.overrides?.cacheDir ?? appConfig.cacheDir,
+		clearScreen: config.overrides?.clearScreen ?? appConfig.clearScreen,
+		customLogger: config.overrides?.customLogger ?? appConfig.customLogger,
+		define: config.overrides?.define ?? appConfig.define,
+		envDir: config.overrides?.envDir ?? appConfig.envDir,
+		envPrefix: config.overrides?.envPrefix ?? appConfig.envPrefix,
+		mode: config.overrides?.mode ?? appConfig.mode,
+		publicDir: config.overrides?.publicDir ?? appConfig.publicDir,
+		root: config.overrides?.root ?? appConfig.root,
+
+		// Server options
+		server: {
+			allowedHosts: config.allowedHosts ?? appConfig.server?.allowedHosts,
+			cors: config.cors ?? appConfig.server?.cors,
+			headers: config.headers ?? appConfig.server?.headers,
+			host: config.host ?? appConfig.server?.host,
+			https: config.https ?? appConfig.server?.https,
+			open: config.open ?? appConfig.server?.open,
+			port: config.port ?? appConfig.server?.port,
+			proxy: config.proxy ?? appConfig.server?.proxy,
+			strictPort: config.strictPort ?? appConfig.server?.strictPort,
 		},
 	};
 }

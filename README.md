@@ -44,7 +44,7 @@ export default defineConfig({
 
 ### API
 
-`multiServer(options)`
+`multiServer(options, inheritAppOptions = true)`
 
 ### Options
 
@@ -75,6 +75,13 @@ Additionally, you can override some of Vite's top-level options:
 - [`mode`](https://vite.dev/config/shared-options.html#mode)
 - [`publicDir`](https://vite.dev/config/shared-options.html#publicdir)
 - [`root`](https://vite.dev/config/shared-options.html#root)
+
+### `inheritAppOptions`
+
+Type: `boolean`  
+Default: `true`
+
+By default, all provided options will fallback to the top-level application options.
 
 ## Related
 
