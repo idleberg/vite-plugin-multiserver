@@ -10,7 +10,7 @@
 
 ## Why?
 
-This plugin was created for rare use-cases where one would want to spin up multiple versions of the same page, both for development and testing. The same could be achieved using the command-line or multiple Vite configs, but the ideas was to keep it simple.
+This plugin was created for rare use-cases where one would want to spin up multiple versions of the same page, both for development and testing. The same could be achieved using the command-line or multiple Vite configs, but the idea was to keep the setup simple.
 
 ## Installation
 
