@@ -22,7 +22,7 @@
 	},
 	"javascript": {
 		"formatter": {
-			"lineWidth": 80,
+			"lineWidth": 120,
 			"quoteStyle": "single"
 		}
 	}
