@@ -8,6 +8,10 @@
 [![CI: Node](https://img.shields.io/github/actions/workflow/status/idleberg/vite-plugin-multiserver/node.yml?logo=nodedotjs&logoColor=white&style=for-the-badge)](https://github.com/idleberg/vite-plugin-multiserver/actions/workflows/node.yml)
 [![CI: Deno](https://img.shields.io/github/actions/workflow/status/idleberg/vite-plugin-multiserver/deno.yml?logo=deno&logoColor=white&style=for-the-badge)](https://github.com/idleberg/vite-plugin-multiserver/actions/workflows/deno.yml)
 
+## Why?
+
+This plugin was created for rare use-cases where one would want to spin up multiple versions of the same page, both for development and testing. The same could be achieved using the command-line or multiple Vite configs, but the ideas was to keep it simple.
+
 ## Installation
 
 ```shell
@@ -23,17 +27,17 @@ import { defineConfig } from 'vite';
 import multiServer from 'vite-plugin-multiserver';
 
 export default defineConfig({
+	// The main server for our application.
+	server: {
+		open: '/',
+		port: 7001,
+	}
 	plugins: [
-		multiServer([
-			{
-				host: 'saturn.local',
-				port: 7001
-			},
-						{
-				host: 'jupiter.local',
-				port: 7002
-			}
-		]),
+		// This server hosts the iFrame route, embedded by the page above.
+		multiServer({
+			open: '/iframe',
+			port: 7002
+		}),
 	]
 });
 ```
@@ -43,6 +47,9 @@ export default defineConfig({
 `multiServer(options)`
 
 ### Options
+
+> [!TIP]
+> Accepts both, a single options object or an array of many.
 
 The default options are currently a subset of the Vite server options:
 
