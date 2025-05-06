@@ -19,6 +19,7 @@ type PluginOptions = CommonServerOptions & {
 		| 'envDir'
 		| 'envPrefix'
 		| 'mode'
+		| 'plugins'
 		| 'publicDir'
 		| 'root'
 	>;
@@ -29,19 +30,14 @@ const servers: ViteDevServer[] = [];
 /**
  * Exports a Vite plugin launches multiple servers.
  * @param options - an array of server options and Vite overrides
- * @param inheritAppOptions - whether to inherit the app options
  * @returns a Vite plugins
  */
-export default function MultiserverPlugin(options: PluginOptions | PluginOptions[], inheritAppOptions = true): Plugin {
+export default function MultiserverPlugin(options: PluginOptions | PluginOptions[]): Plugin {
 	let appConfig: UserConfig = {};
 
 	return {
 		name: 'vite-plugin-multiserver',
 		configResolved(config) {
-			if (!inheritAppOptions) {
-				return;
-			}
-
 			appConfig = mergeOptions({}, config);
 		},
 
@@ -89,28 +85,31 @@ export default function MultiserverPlugin(options: PluginOptions | PluginOptions
 function mergeOptions(config: PluginOptions, appConfig: ResolvedConfig | UserConfig): UserConfig {
 	return {
 		// Overrides
-		base: config.overrides?.base ?? appConfig.base,
-		cacheDir: config.overrides?.cacheDir ?? appConfig.cacheDir,
-		clearScreen: config.overrides?.clearScreen ?? appConfig.clearScreen,
-		customLogger: config.overrides?.customLogger ?? appConfig.customLogger,
-		define: config.overrides?.define ?? appConfig.define,
-		envDir: config.overrides?.envDir ?? appConfig.envDir,
-		envPrefix: config.overrides?.envPrefix ?? appConfig.envPrefix,
-		mode: config.overrides?.mode ?? appConfig.mode,
-		publicDir: config.overrides?.publicDir ?? appConfig.publicDir,
-		root: config.overrides?.root ?? appConfig.root,
+		base: config.overrides?.base ?? appConfig.base ?? undefined,
+		cacheDir: config.overrides?.cacheDir ?? appConfig.cacheDir ?? undefined,
+		clearScreen: config.overrides?.clearScreen ?? appConfig.clearScreen ?? undefined,
+		customLogger: config.overrides?.customLogger ?? appConfig.customLogger ?? undefined,
+		define: config.overrides?.define ?? appConfig.define ?? undefined,
+		envDir: config.overrides?.envDir ?? appConfig.envDir ?? undefined,
+		envPrefix: config.overrides?.envPrefix ?? appConfig.envPrefix ?? undefined,
+		mode: config.overrides?.mode ?? appConfig.mode ?? undefined,
+		publicDir: config.overrides?.publicDir ?? appConfig.publicDir ?? undefined,
+		root: config.overrides?.root ?? appConfig.root ?? undefined,
+		plugins: config.overrides?.plugins ?? [],
 
 		// Server options
 		server: {
-			allowedHosts: config.allowedHosts ?? appConfig.server?.allowedHosts,
-			cors: config.cors ?? appConfig.server?.cors,
-			headers: config.headers ?? appConfig.server?.headers,
-			host: config.host ?? appConfig.server?.host,
-			https: config.https ?? appConfig.server?.https,
-			open: config.open ?? appConfig.server?.open,
-			port: config.port ?? appConfig.server?.port,
-			proxy: config.proxy ?? appConfig.server?.proxy,
-			strictPort: config.strictPort ?? appConfig.server?.strictPort,
+			allowedHosts: config.allowedHosts ?? appConfig.server?.allowedHosts ?? undefined,
+			cors: config.cors ?? appConfig.server?.cors ?? undefined,
+			headers: config.headers ?? appConfig.server?.headers ?? undefined,
+			https: config.https ?? appConfig.server?.https ?? undefined,
+			proxy: config.proxy ?? appConfig.server?.proxy ?? undefined,
+			strictPort: config.strictPort ?? appConfig.server?.strictPort ?? undefined,
+
+			// Don't inherit the app config
+			host: config.host ?? undefined,
+			open: config.open ?? undefined,
+			port: config.port ?? undefined,
 		},
 	};
 }
