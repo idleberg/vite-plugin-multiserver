@@ -65,16 +65,16 @@ The default options are currently a subset of the Vite server options:
 
 Additionally, you can override some of Vite's top-level options:
 
-- [`base`](https://vite.dev/config/shared-options.html#base)
-- [`cacheDir`](https://vite.dev/config/shared-options.html#cachedir)
-- [`clearScreen`](https://vite.dev/config/shared-options.html#clearscreen)
-- [`customLogger`](https://vite.dev/config/shared-options.html#customlogger)
-- [`define`](https://vite.dev/config/shared-options.html#define)
-- [`envDir`](https://vite.dev/config/shared-options.html#envdir)
-- [`envPrefix`](https://vite.dev/config/shared-options.html#envprefix)
-- [`mode`](https://vite.dev/config/shared-options.html#mode)
-- [`publicDir`](https://vite.dev/config/shared-options.html#publicdir)
-- [`root`](https://vite.dev/config/shared-options.html#root)
+- [`overrides.base`](https://vite.dev/config/shared-options.html#base)
+- [`overrides.cacheDir`](https://vite.dev/config/shared-options.html#cachedir)
+- [`overrides.clearScreen`](https://vite.dev/config/shared-options.html#clearscreen)
+- [`overrides.customLogger`](https://vite.dev/config/shared-options.html#customlogger)
+- [`overrides.define`](https://vite.dev/config/shared-options.html#define)
+- [`overrides.envDir`](https://vite.dev/config/shared-options.html#envdir)
+- [`overrides.envPrefix`](https://vite.dev/config/shared-options.html#envprefix)
+- [`overrides.mode`](https://vite.dev/config/shared-options.html#mode)
+- [`overrides.publicDir`](https://vite.dev/config/shared-options.html#publicdir)
+- [`overrides.root`](https://vite.dev/config/shared-options.html#root)
 
 ## Related
 
