@@ -44,7 +44,7 @@ export default defineConfig({
 
 ### API
 
-`multiServer(options, inheritAppOptions = true)`
+`multiServer(options)`
 
 ### Options
 
