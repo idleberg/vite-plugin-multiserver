@@ -14,8 +14,16 @@ This plugin was created for rare use-cases where one would want to spin up multi
 
 ## Installation
 
+On NodeJS or Bun you can install from npm
+
 ```shell
-npm install -D vite-plugin-multiserver
+npm install -vite-plugin-multiserver
+```
+
+On Deno you can install using JSR
+
+```shell
+deno add jsr:@idleberg/vite-plugin-multiserver
 ```
 
 ## Usage
