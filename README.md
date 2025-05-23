@@ -31,22 +31,22 @@ deno add jsr:@idleberg/vite-plugin-multiserver
 Let's start with a basic example where we spin up a server for the main website and a second one for an iFrame embedded by that page. The idea is that both are part of the same application.
 
 ```javascript
-import { defineConfig } from 'vite';
-import multiServer from 'vite-plugin-multiserver';
+import { defineConfig } from "vite";
+import multiServer from "vite-plugin-multiserver";
 
 export default defineConfig({
 	// The main server for our application.
 	server: {
-		open: '/',
+		open: "/",
 		port: 7001,
-	}
+	},
 	plugins: [
 		// This server hosts the iFrame route, embedded by the page above.
 		multiServer({
-			open: '/iframe',
-			port: 7002
+			open: "/iframe",
+			port: 7002,
 		}),
-	]
+	],
 });
 ```
 
