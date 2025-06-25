@@ -1,6 +1,6 @@
 {
 	"name": "@idleberg/vite-plugin-multiserver",
-	"version": "0.3.0",
+	"version": "0.2.1",
 	"exports": "./src/plugin.ts",
 	"publish": {
 		"include": ["src/", "jsr.json", "LICENSE", "README.md"]
