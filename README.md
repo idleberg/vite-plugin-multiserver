@@ -1,6 +1,6 @@
 # vite-plugin-multiserver
 
-> A Vite plugin to launches multiple servers for the same app.
+> A Vite plugin to launch multiple servers for the same app.
 
 [![License](https://img.shields.io/github/license/idleberg/vite-plugin-multiserver?color=blue&style=for-the-badge)](https://github.com/idleberg/vite-plugin-multiserver/blob/main/LICENSE)
 [![Version: npm](https://img.shields.io/npm/v/vite-plugin-multiserver?style=for-the-badge)](https://www.npmjs.org/package/vite-plugin-multiserver)
