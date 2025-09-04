@@ -28,7 +28,7 @@ deno add jsr:@idleberg/vite-plugin-multiserver
 
 ## Usage
 
-Let's start with a basic example where we spin up a server for the main website and a second one for an iFrame embedded by that page. The idea is that both are part of the same application.
+Let's start with a basic example where we spin up a server for the main website and a second one for an iFrame embedded by that page. The idea is that both are part of the same application, but we want to be able to test cross-origin messaging.
 
 ```javascript
 import { defineConfig } from "vite";
