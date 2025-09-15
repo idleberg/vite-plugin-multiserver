@@ -28,7 +28,7 @@
 	"scripts": {
 		"build": "tsdown",
 		"dev": "tsdown --watch",
-		"lint": "biome check --no-errors-on-unmatched --vcs-enabled=true --vcs-use-ignore-file=true",
+		"lint": "biome check",
 		"prepack": "npm run build",
 		"prepare": "lefthook install",
 		"publish:jsr": "deno publish",
@@ -39,6 +39,7 @@
 		"@biomejs/biome": "^2.0.5",
 		"@commitlint/cli": "^19.8.1",
 		"@commitlint/config-conventional": "^19.8.1",
+		"@idleberg/configs": "^0.2.0",
 		"@total-typescript/tsconfig": "^1.0.4",
 		"@types/node": "^22.15.17",
 		"lefthook": "^1.11.14",
