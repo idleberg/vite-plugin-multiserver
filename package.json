@@ -1,6 +1,6 @@
 {
 	"name": "vite-plugin-multiserver",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "A Vite plugin to launchemultiple servers for the same app",
 	"license": "MIT",
 	"author": "Jan T. Sott",
