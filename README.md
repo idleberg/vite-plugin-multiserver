@@ -86,7 +86,9 @@ Additionally, you can override some of Vite's top-level options:
 
 ## Related
 
-- [vite-plugin-multiple](https://github.com/vite-plugin/vite-plugin-multiple): Allow multiple Vite to run simultaneously
+If this project is not for you, maybe these alternatives suit you better:
+
+- [vite-plugin-multiple](https://github.com/vite-plugin/vite-plugin-multiple)
 
 ## License
 
