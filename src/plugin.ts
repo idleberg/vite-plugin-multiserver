@@ -41,10 +41,10 @@ export default function MultiserverPlugin(options: PluginOptions | PluginOptions
 			appConfig = mergeOptions({}, config);
 		},
 
-		configureServer() {
+		async configureServer() {
 			const optionsArray = Array.isArray(options) ? options : [options];
 
-			optionsArray.forEach(async (config, index) => {
+			for (const [index, config] of optionsArray.entries()) {
 				const devServer = await createServer({
 					configFile: false,
 
@@ -58,7 +58,7 @@ export default function MultiserverPlugin(options: PluginOptions | PluginOptions
 				servers[index].bindCLIShortcuts({
 					print: true,
 				});
-			});
+			}
 		},
 
 		closeBundle() {
