@@ -25,14 +25,13 @@ type PluginOptions = CommonServerOptions & {
 	>;
 };
 
-const servers: ViteDevServer[] = [];
-
 /**
  * Exports a Vite plugin launches multiple servers.
  * @param options - an array of server options and Vite overrides
  * @returns a Vite plugins
  */
 export default function MultiserverPlugin(options: PluginOptions | PluginOptions[]): Plugin {
+	const servers: ViteDevServer[] = [];
 	let appConfig: UserConfig = {};
 
 	return {
