@@ -24,7 +24,7 @@ export default defineConfig({
 	],
 
 	webServer: {
-		command: 'pnpm exec vite --config tests/fixtures/basic/vite.config.ts tests/fixtures/basic',
+		command: 'vite --config tests/fixtures/basic/vite.config.ts tests/fixtures/basic',
 		url: 'http://localhost:7001',
 		reuseExistingServer: !env.CI,
 		timeout: 10_000,
