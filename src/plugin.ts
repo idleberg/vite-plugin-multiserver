@@ -8,8 +8,7 @@ import {
 } from 'vite';
 
 // Mix and match, based on the existing types of Vite options.
-
-type PluginOptions = CommonServerOptions & {
+export type PluginOptions = CommonServerOptions & {
 	overrides?: Pick<
 		UserConfig,
 		| 'base'
@@ -97,7 +96,7 @@ export default function MultiserverPlugin(options: PluginOptions | PluginOptions
 * @param appConfig
 * @returns
 */
-function mergeOptions(config: PluginOptions, appConfig: ResolvedConfig | UserConfig): UserConfig {
+export function mergeOptions(config: PluginOptions, appConfig: ResolvedConfig | UserConfig): UserConfig {
 	return {
 		// Overrides
 		base: config.overrides?.base ?? appConfig.base ?? undefined,
