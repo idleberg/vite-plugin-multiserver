@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Multi-Server Test - Iframe</title>
+</head>
+<body>
+	<h2>Iframe Server (Port 7002)</h2>
+	<div id="iframe-status" data-testid="iframe-status">Iframe loaded</div>
+
+	<script type="module">
+		const status = document.getElementById('iframe-status');
+
+		window.addEventListener('message', (event) => {
+			if (event.origin === 'http://localhost:7001') {
+				status.textContent = `Received: ${event.data}`;
+				event.source.postMessage('Hello from iframe', event.origin);
+			}
+		});
+
+		// Signal that iframe is ready
+		if (window.parent !== window) {
+			window.parent.postMessage('iframe-ready', 'http://localhost:7001');
+		}
+	</script>
+</body>
+</html>

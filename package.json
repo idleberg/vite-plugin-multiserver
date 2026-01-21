@@ -35,17 +35,21 @@
 		"prepare": "lefthook install",
 		"publish:jsr": "deno publish",
 		"publish:npm": "np --no-yarn --any-branch",
-		"test": "echo \"No tests specified\" && exit 0"
+		"test": "concurrently --prefix '{name}' -c 'green,blue' 'npm:test:*'",
+		"test:e2e": "playwright test"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^20.3.1",
 		"@commitlint/config-conventional": "^20.3.1",
 		"@idleberg/configs": "^0.4.1",
+		"@playwright/test": "^1.57.0",
 		"@types/node": "^24.9.1",
 		"np": "^10.3.0",
+		"playwright": "^1.57.0",
 		"tsdown": "0.20.0-beta.4",
 		"typescript": "^5.9.3",
-		"vite": "^7.3.1"
+		"vite": "^7.3.1",
+		"vitest": "^4.0.17"
 	},
 	"peerDependencies": {
 		"vite": "^5.0.0 || ^6.0.0 || ^7.0.0"
