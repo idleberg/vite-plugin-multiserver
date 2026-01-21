@@ -15,8 +15,8 @@
 		"http-server"
 	],
 	"type": "module",
-	"exports": "./dist/plugin.js",
-	"types": "./dist/plugin.d.ts",
+	"exports": "./dist/plugin.mjs",
+	"types": "./dist/plugin.d.mts",
 	"engines": {
 		"node": "^20.19.0 || >=22.12.0"
 	},
