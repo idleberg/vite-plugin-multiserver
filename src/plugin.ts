@@ -8,6 +8,7 @@ import {
 } from 'vite';
 
 // Mix and match, based on the existing types of Vite options.
+
 type PluginOptions = CommonServerOptions & {
 	overrides?: Pick<
 		UserConfig,
@@ -26,61 +27,72 @@ type PluginOptions = CommonServerOptions & {
 };
 
 /**
- * Exports a Vite plugin launches multiple servers.
- * @param options - an array of server options and Vite overrides
- * @returns a Vite plugins
- */
+
+* Exports a Vite plugin launches multiple servers.
+
+* @param options - an array of server options and Vite overrides
+
+* @returns a Vite plugins
+
+*/
+
 export default function MultiserverPlugin(options: PluginOptions | PluginOptions[]): Plugin {
 	const servers: ViteDevServer[] = [];
+
 	let appConfig: UserConfig = {};
+
+	async function createServers() {
+		const optionsArray = Array.isArray(options) ? options : [options];
+
+		for (const [index, config] of optionsArray.entries()) {
+			const devServer = await createServer({
+				configFile: false,
+
+				...mergeOptions(config, appConfig),
+			});
+
+			servers[index] = await devServer.listen();
+
+			console.log(/* let it breathe */);
+
+			servers[index].printUrls();
+
+			servers[index].bindCLIShortcuts({
+				print: true,
+			});
+		}
+	}
+
+	async function handleServer(server: ViteDevServer) {
+		await createServers();
+
+		server.httpServer?.on('close', () => {
+			for (const s of servers) {
+				s.close();
+			}
+		});
+	}
 
 	return {
 		name: 'vite-plugin-multiserver',
+
 		configResolved(config) {
 			appConfig = mergeOptions({}, config);
 		},
 
-		async configureServer() {
-			const optionsArray = Array.isArray(options) ? options : [options];
-
-			for (const [index, config] of optionsArray.entries()) {
-				const devServer = await createServer({
-					configFile: false,
-
-					...mergeOptions(config, appConfig),
-				});
-
-				servers[index] = await devServer.listen();
-
-				console.log(/* let it breathe */);
-				servers[index].printUrls();
-				servers[index].bindCLIShortcuts({
-					print: true,
-				});
-			}
-		},
-
-		closeBundle() {
-			/**
-			 * It seems I have to close the servers because otherwise they will start
-			 * on different ports whenever the `vite.config.ts` file is changed. This
-			 * can't be right and I hope I can get around this in the future.
-			 *
-			 * Any ideas?
-			 */
-			for (const server of servers) {
-				server.close();
-			}
+		async configureServer(server) {
+			await handleServer(server);
 		},
 	};
 }
 
 /**
- * Helper function to filter & merge options.
- * @param config
- * @param appConfig
- * @returns
- */
+
+* Helper function to filter & merge options.
+* @param config
+* @param appConfig
+* @returns
+*/
 function mergeOptions(config: PluginOptions, appConfig: ResolvedConfig | UserConfig): UserConfig {
 	return {
 		// Overrides
