@@ -34,7 +34,7 @@ test.describe('vite-plugin-multiserver', () => {
 		expect(iframeStatus).toContain('Received: Hello from main page');
 	});
 
-	test('should serve different content on different ports', async ({ page, context }) => {
+	test('should serve different content on different ports', async ({ context }) => {
 		// Open both pages in different tabs
 		const page1 = await context.newPage();
 		const page2 = await context.newPage();
