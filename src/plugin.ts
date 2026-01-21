@@ -83,6 +83,10 @@ export default function MultiserverPlugin(options: PluginOptions | PluginOptions
 		async configureServer(server) {
 			await handleServer(server);
 		},
+
+		async configurePreviewServer() {
+			await createServer();
+		},
 	};
 }
 
