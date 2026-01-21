@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Multi-Server Test - Main Page</title>
+</head>
+<body>
+	<h1>Main Server (Port 7001)</h1>
+	<div id="status">Loading iframe...</div>
+	<iframe id="test-iframe" src="http://localhost:7002/iframe.html" width="400" height="300"></iframe>
+
+	<script type="module">
+		const iframe = document.getElementById('test-iframe');
+		const status = document.getElementById('status');
+
+		window.addEventListener('message', (event) => {
+			if (event.origin === 'http://localhost:7002') {
+				status.textContent = `Received message from iframe: ${event.data}`;
+				status.setAttribute('data-testid', 'message-received');
+			}
+		});
+
+		iframe.addEventListener('load', () => {
+			iframe.contentWindow.postMessage('Hello from main page', 'http://localhost:7002');
+		});
+	</script>
+</body>
+</html>

@@ -9,5 +9,6 @@ test-results/
 # Development
 .env
 index.html
+!/tests/**/index.html
 /vite.config.*
 vite*.config.ts.timestamp-*
