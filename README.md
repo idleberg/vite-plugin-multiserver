@@ -8,11 +8,11 @@
 [![CI: Node](https://img.shields.io/github/actions/workflow/status/idleberg/vite-plugin-multiserver/node.yml?logo=nodedotjs&logoColor=white&style=for-the-badge)](https://github.com/idleberg/vite-plugin-multiserver/actions/workflows/node.yml)
 [![CI: Deno](https://img.shields.io/github/actions/workflow/status/idleberg/vite-plugin-multiserver/deno.yml?logo=deno&logoColor=white&style=for-the-badge)](https://github.com/idleberg/vite-plugin-multiserver/actions/workflows/deno.yml)
 
-## Why?
+## Why? 🤔
 
 This plugin was created for rare use-cases where one would want to spin up multiple versions of the same page, both for development and testing. The same could be achieved using the command-line or multiple Vite configs, but the idea was to keep the setup simple.
 
-## Installation
+## Installation 💿
 
 On NodeJS or Bun you can install from npm
 
@@ -26,7 +26,7 @@ On Deno you can install using JSR
 deno add jsr:@idleberg/vite-plugin-multiserver
 ```
 
-## Usage
+## Usage 🚀
 
 Let's start with a basic example where we spin up a server for the main website and a second one for an iFrame embedded by that page. The idea is that both are part of the same application, but we want to be able to test cross-origin messaging.
 
@@ -50,7 +50,7 @@ export default defineConfig({
 });
 ```
 
-### API
+### API ⚙️
 
 `multiServer(options)`
 
@@ -84,12 +84,12 @@ Additionally, you can override some of Vite's top-level options:
 - [`overrides.publicDir`](https://vite.dev/config/shared-options.html#publicdir)
 - [`overrides.root`](https://vite.dev/config/shared-options.html#root)
 
-## Related
+## Related 👫
 
 If this project is not for you, maybe these alternatives suit you better:
 
 - [vite-plugin-multiple](https://github.com/vite-plugin/vite-plugin-multiple)
 
-## License
+## License ©️
 
 This work is licensed under [The MIT License](LICENSE).
