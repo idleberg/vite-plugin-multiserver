@@ -34,7 +34,7 @@
 		"prepack": "npm run build",
 		"prepare": "lefthook install",
 		"publish:jsr": "deno publish",
-		"publish:npm": "np --no-yarn --any-branch",
+		"publish:npm": "np",
 		"test": "concurrently --prefix '{name}' -c 'green,blue' 'npm:test:*'",
 		"test:unit": "vitest run",
 		"test:e2e": "playwright test"
