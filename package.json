@@ -18,7 +18,7 @@
 	"exports": "./dist/plugin.mjs",
 	"types": "./dist/plugin.d.mts",
 	"engines": {
-		"node": "^20.19.0 || >=22.12.0"
+		"node": "^20.21.0 || >=22.12.0"
 	},
 	"files": [
 		"dist/",
@@ -40,19 +40,19 @@
 		"test:e2e": "playwright test"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^20.3.1",
-		"@commitlint/config-conventional": "^20.3.1",
-		"@idleberg/configs": "^0.4.1",
-		"@playwright/test": "^1.57.0",
+		"@commitlint/cli": "^20.4.1",
+		"@commitlint/config-conventional": "^20.4.1",
+		"@idleberg/configs": "^0.4.2",
+		"@playwright/test": "^1.58.2",
 		"@types/node": "^24.9.1",
-		"@vitest/coverage-v8": "4.0.17",
+		"@vitest/coverage-v8": "4.0.18",
 		"concurrently": "^9.2.1",
-		"np": "^10.3.0",
-		"playwright": "^1.57.0",
-		"tsdown": "0.20.0-beta.4",
+		"np": "^11.0.2",
+		"playwright": "^1.58.2",
+		"tsdown": "0.20.3",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.1",
-		"vitest": "^4.0.17"
+		"vitest": "^4.0.18"
 	},
 	"peerDependencies": {
 		"vite": "^5.0.0 || ^6.0.0 || ^7.0.0"
