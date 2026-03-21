@@ -2,7 +2,13 @@
 	"name": "@idleberg/vite-plugin-multiserver",
 	"version": "0.4.0",
 	"exports": "./src/plugin.ts",
+	"imports": {
+		"vite": "npm:vite@^8.0.0"
+	},
 	"publish": {
 		"include": ["src/", "jsr.json", "LICENSE", "README.md"]
+	},
+	"compilerOptions": {
+		"lib": ["deno.window"]
 	}
 }
