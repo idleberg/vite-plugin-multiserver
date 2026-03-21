@@ -6,7 +6,7 @@
 		"vite": "npm:vite@^8.0.0"
 	},
 	"publish": {
-		"include": ["src/", "jsr.json", "LICENSE", "README.md"]
+		"include": ["src/", "LICENSE", "README.md"]
 	},
 	"compilerOptions": {
 		"lib": ["deno.window"]
